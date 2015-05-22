@@ -1,0 +1,21 @@
+{
+  "name": "pcas_tp",
+  "version": "1.0.0",
+  "description": "A simple application that uses MVA to solve by any given number of N",
+  "main": "app.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "MVA",
+    "node",
+    "Queue"
+  ],
+  "author": "lricoy",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^0.9.2",
+    "prompt": "^0.2.14",
+    "sync-prompt": "^0.4.2"
+  }
+}
