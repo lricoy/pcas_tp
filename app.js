@@ -48,7 +48,7 @@ var calcMVA = function(callback) {
     for (var j = 1; j <=m; j++) {
 
       // Calcula o tempo médio de espera, baseado no último loop
-      results[i].tempo_de_espera[j] = (servers[j-1].si) * (results[i-1].n[j] + 1);
+      results[i].tempo_de_espera[j] = (servers[j-1].si ) * (results[i-1].n[j] + 1);
 
       // Calcula o throughput para a rede
       total_delay += results[i].tempo_de_espera[j] * servers[j-1].vi;
@@ -78,7 +78,7 @@ var calcMVA = function(callback) {
 
     for (var j = 1; j <=m; j++) {
       // printComponentData(j, results[i].n[j], results[i].tempo_de_espera[j], results[i].throughput[j], results[i].u[j]);
-        printCsvData(i, j, results[i].n[j], results[i].tempo_de_espera[j], results[i].throughput[j], results[i].u[j], results[i].s, total_delay);
+      printCsvData(i, j, servers[j-1].si, servers[j-1].vi, results[i].n[j], results[i].tempo_de_espera[j], results[i].throughput[j], results[i].u[j], results[i].s, total_delay);
     };
 
   };
@@ -90,11 +90,11 @@ var printSystemData = function(nCustomers, sysTruput, totalDelay) {
 };
 
 var printHeaders = function() {
-  console.log("Num. Clientes\tM\tN()\tR\tX\tU\tX0\tR Sistema");
+  console.log("Num. Clientes;M (Dispositivo);Si;Vi;N();R;X;U;X0;R Sistema");
 };
-var printCsvData = function(i, j, n, r, x, u, x0, r_total) {
-  console.log("%s	%s	%s	%s	%s	%s	%s	%s	",
-    i, j, n, r, x, u, x0, r_total);
+var printCsvData = function(i, j, si, vi, n, r, x, u, x0, r_total) {
+  console.log("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;",
+    i, j, si, vi, n, r, x, u, x0, r_total);
 };
 
 var printComponentData = function(name, length, delay, throughput, utilization) {
